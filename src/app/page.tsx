@@ -43,25 +43,27 @@ export default function Home() {
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <ScrollAnimation>
               <motion.div
-                className="inline-block mb-6 p-2 px-4 rounded-full bg-primary/10 text-primary border border-primary/20"
+                className="inline-block mb-6 p-2 px-4 rounded-full bg-blue-500 text-white text-primary border border-primary/20"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <span className="text-sm font-medium flex items-center gap-1.5">
-                  <Sparkles className="h-3.5 w-3.5" />A safe space for mental
-                  wellbeing
+                  <Sparkles className="h-3.5 w-3.5 text-yellow-500" />Paragon International
+                  University
                 </span>
               </motion.div>
             </ScrollAnimation>
 
             <ScrollAnimation delay={0.1}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/70 leading-tight flex items-center gap-2">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/70 leading-tight flex flex-wrap items-center gap-1 sm:gap-2">
                 Welcome to
-                <span className="relative flex items-center gap-2 dark:text-white text-red-500">
-                  <Heart className="h-8 w-8 text-red-500" />
-                  MindSpeak
+                <span className="relative flex items-center gap-1 sm:gap-2 text-red-500">
+                  <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+                    MindSpeak
+                  </span>
                   <motion.span
-                    className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary/80 to-primary/20 dark:bg-red-500 rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-primary/80 to-primary/20 dark:bg-red-500 rounded-full"
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
                     transition={{ delay: 0.5, duration: 0.8 }}
@@ -69,7 +71,6 @@ export default function Home() {
                 </span>
               </h1>
             </ScrollAnimation>
-
             <ScrollAnimation delay={0.2}>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-[800px] mx-auto mb-8 leading-relaxed">
                 A safe haven for expressing mental struggles and sharing
@@ -94,7 +95,7 @@ export default function Home() {
                   variant="outline"
                   size="lg"
                   className="border-primary/20 hover:border-primary/50 rounded-full px-8 transition-all duration-300 bg-teal-500 text-white hover:bg-teal-400 hover:text-white"
-                  >
+                >
                   <Link href="/share">Share Your Story</Link>
                 </Button>
               </div>
@@ -267,7 +268,9 @@ export default function Home() {
                       <p className="font-medium">
                         Business Administration Student
                       </p>
-                      <p className="text-sm text-muted-foreground">Paragon University</p>
+                      <p className="text-sm text-muted-foreground">
+                        Paragon University
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -297,7 +300,9 @@ export default function Home() {
                     </p>
                     <div className="pt-4">
                       <p className="font-medium">Psychology Student</p>
-                      <p className="text-sm text-muted-foreground">Paragon University</p>
+                      <p className="text-sm text-muted-foreground">
+                        Paragon University
+                      </p>
                     </div>
                   </div>
                 </CardContent>
