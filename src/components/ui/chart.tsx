@@ -208,13 +208,12 @@ const ChartTooltipContent = React.forwardRef<
                       !hideIndicator && (
                         <div
                           className={cn(
-                            "shrink-0 rounded-[2px] border-[--color-border] bg-[--color-bg]",
+                            "indicator indicator-style",
                             {
-                              "h-2.5 w-2.5": indicator === "dot",
-                              "w-1": indicator === "line",
-                              "w-0 border-[1.5px] border-dashed bg-transparent":
-                                indicator === "dashed",
-                              "my-0.5": nestLabel && indicator === "dashed",
+                              "indicator-dot": indicator === "dot",
+                              "indicator-line": indicator === "line",
+                              "indicator-dashed": indicator === "dashed",
+                              "indicator-dashed-nest": nestLabel && indicator === "dashed",
                             }
                           )}
                           style={

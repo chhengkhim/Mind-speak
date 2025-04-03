@@ -140,10 +140,10 @@ export default function Navbar() {
               ))}
             </nav>
             <div className="grid grid-cols-2 gap-2 pt-2">
-              <Button asChild variant="outline" size="sm">
+              <Button className="bg-blue-500 text-white hover:bg-white hover:text-blue-500 shadow-lg hover:shadow-blue-500" asChild variant="outline" size="sm">
                 <Link href="/login">Sign In</Link>
               </Button>
-              <Button asChild size="sm">
+              <Button className="bg-teal-500 text-white hover:bg-white hover:text-teal-500 shadow-lg hover:shadow-teal-500" asChild size="sm">
                 <Link href="/join">Join</Link>
               </Button>
             </div>
