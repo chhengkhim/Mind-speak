@@ -41,11 +41,11 @@ export default function ResourcesPage() {
                     </li>
                     <li className="flex justify-between">
                       <span>Cambodia Mental Health Hotline:</span>
-                      <span className="font-medium">017 222 372</span>
+                      <span className="font-medium">017 276 477</span>
                     </li>
                     <li className="flex justify-between">
                       <span>TPO Cambodia Hotline:</span>
-                      <span className="font-medium">017 222 372</span>
+                      <span className="font-medium">017 276 477</span>
                     </li>
                   </ul>
                 </div>
