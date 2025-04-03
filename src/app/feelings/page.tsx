@@ -1,31 +1,88 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useRef } from "react"
-import { motion, AnimatePresence, Variants } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { Heart, MessageCircle, ThumbsUp, Send, Smile, Frown, Meh, MoreHorizontal, Edit, Trash2 } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { cn } from "@/lib/utils"
-import { ScrollAnimation } from "@/components/ui/scroll-animation"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import {
+  Heart,
+  MessageCircle,
+  ThumbsUp,
+  Send,
+  Smile,
+  Frown,
+  Meh,
+  MoreHorizontal,
+  Edit,
+  Trash2,
+} from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
+import { ScrollAnimation } from "@/components/ui/scroll-animation";
 
 // Feeling types with corresponding colors
 const feelingTypes = [
-  { name: "Happy", emoji: "😊", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100" },
-  { name: "Sad", emoji: "😢", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100" },
-  { name: "Anxious", emoji: "😰", color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100" },
-  { name: "Angry", emoji: "😠", color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100" },
-  { name: "Confused", emoji: "😕", color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100" },
-  { name: "Grateful", emoji: "🙏", color: "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-100" },
-  { name: "Overwhelmed", emoji: "😩", color: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100" },
-  { name: "Hopeful", emoji: "🌱", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100" },
-]
+  {
+    name: "Happy",
+    emoji: "😊",
+    color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100",
+  },
+  {
+    name: "Sad",
+    emoji: "😢",
+    color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100",
+  },
+  {
+    name: "Anxious",
+    emoji: "😰",
+    color:
+      "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100",
+  },
+  {
+    name: "Angry",
+    emoji: "😠",
+    color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100",
+  },
+  {
+    name: "Confused",
+    emoji: "😕",
+    color:
+      "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100",
+  },
+  {
+    name: "Grateful",
+    emoji: "🙏",
+    color: "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-100",
+  },
+  {
+    name: "Overwhelmed",
+    emoji: "😩",
+    color:
+      "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100",
+  },
+  {
+    name: "Hopeful",
+    emoji: "🌱",
+    color:
+      "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100",
+  },
+];
 
 // Sample feelings data
 const initialFeelings = [
@@ -39,13 +96,22 @@ const initialFeelings = [
     comments: 3,
     isLiked: false,
     commentsList: [
-      { id: 1, content: "You should be proud! That's a big step.", timestamp: "1 hour ago" },
-      { id: 2, content: "I struggle with this too. You're doing great!", timestamp: "30 minutes ago" },
+      {
+        id: 1,
+        content: "You should be proud! That's a big step.",
+        timestamp: "1 hour ago",
+      },
+      {
+        id: 2,
+        content: "I struggle with this too. You're doing great!",
+        timestamp: "30 minutes ago",
+      },
     ],
   },
   {
     id: 2,
-    content: "Failed my exam today. Feeling like a complete failure and don't know how to tell my parents.",
+    content:
+      "Failed my exam today. Feeling like a complete failure and don't know how to tell my parents.",
     feeling: "Sad",
     timestamp: "5 hours ago",
     likes: 24,
@@ -54,12 +120,14 @@ const initialFeelings = [
     commentsList: [
       {
         id: 1,
-        content: "One exam doesn't define you. Take some time to process and then make a plan.",
+        content:
+          "One exam doesn't define you. Take some time to process and then make a plan.",
         timestamp: "4 hours ago",
       },
       {
         id: 2,
-        content: "I've been there. Parents can be more understanding than you expect.",
+        content:
+          "I've been there. Parents can be more understanding than you expect.",
         timestamp: "3 hours ago",
       },
     ],
@@ -74,8 +142,17 @@ const initialFeelings = [
     comments: 12,
     isLiked: false,
     commentsList: [
-      { id: 1, content: "This gives me hope for my own journey. Thank you for sharing.", timestamp: "20 hours ago" },
-      { id: 2, content: "So happy for you! Keep going!", timestamp: "10 hours ago" },
+      {
+        id: 1,
+        content:
+          "This gives me hope for my own journey. Thank you for sharing.",
+        timestamp: "20 hours ago",
+      },
+      {
+        id: 2,
+        content: "So happy for you! Keep going!",
+        timestamp: "10 hours ago",
+      },
     ],
   },
   {
@@ -87,24 +164,33 @@ const initialFeelings = [
     likes: 38,
     comments: 5,
     isLiked: false,
-    commentsList: [{ id: 1, content: "Those small acts of kindness make such a difference.", timestamp: "1 day ago" }],
+    commentsList: [
+      {
+        id: 1,
+        content: "Those small acts of kindness make such a difference.",
+        timestamp: "1 day ago",
+      },
+    ],
   },
-]
+];
 
 export default function FeelingsPage() {
-  const [feelings, setFeelings] = useState(initialFeelings)
-  const [newFeeling, setNewFeeling] = useState("")
-  const [selectedFeelingType, setSelectedFeelingType] = useState("Happy")
-  const [showCommentInput, setShowCommentInput] = useState<number | null>(null)
-  const [commentText, setCommentText] = useState("")
-  const [editingComment, setEditingComment] = useState<{ feelingId: number; commentId: number } | null>(null)
+  const [feelings, setFeelings] = useState(initialFeelings);
+  const [newFeeling, setNewFeeling] = useState("");
+  const [selectedFeelingType, setSelectedFeelingType] = useState("Happy");
+  const [showCommentInput, setShowCommentInput] = useState<number | null>(null);
+  const [commentText, setCommentText] = useState("");
+  const [editingComment, setEditingComment] = useState<{
+    feelingId: number;
+    commentId: number;
+  } | null>(null);
   const [editCommentText, setEditCommentText] = useState<string>(""); // Ensure this line exists in the component
 
   // Ref for scrolling to comments
-  const commentsRef = useRef<HTMLDivElement>(null)
+  const commentsRef = useRef<HTMLDivElement>(null);
 
   const handlePostFeeling = () => {
-    if (!newFeeling.trim()) return
+    if (!newFeeling.trim()) return;
 
     const newFeelingObj = {
       id: feelings.length + 1,
@@ -115,11 +201,11 @@ export default function FeelingsPage() {
       comments: 0,
       isLiked: false,
       commentsList: [],
-    }
+    };
 
-    setFeelings([newFeelingObj, ...feelings])
-    setNewFeeling("")
-  }
+    setFeelings([newFeelingObj, ...feelings]);
+    setNewFeeling("");
+  };
 
   const handleLike = (id: number) => {
     setFeelings(
@@ -129,15 +215,15 @@ export default function FeelingsPage() {
             ...feeling,
             likes: feeling.isLiked ? feeling.likes - 1 : feeling.likes + 1,
             isLiked: !feeling.isLiked,
-          }
+          };
         }
-        return feeling
-      }),
-    )
-  }
+        return feeling;
+      })
+    );
+  };
 
   const handleAddComment = (id: number) => {
-    if (!commentText.trim()) return
+    if (!commentText.trim()) return;
 
     setFeelings(
       feelings.map((feeling) => {
@@ -146,33 +232,33 @@ export default function FeelingsPage() {
             id: feeling.commentsList.length + 1,
             content: commentText,
             timestamp: "Just now",
-          }
+          };
           return {
             ...feeling,
             comments: feeling.comments + 1,
             commentsList: [...feeling.commentsList, newComment],
-          }
+          };
         }
-        return feeling
-      }),
-    )
+        return feeling;
+      })
+    );
 
-    setCommentText("")
-    setShowCommentInput(null)
-  }
+    setCommentText("");
+    setShowCommentInput(null);
+  };
 
   const handleEditComment = (feelingId: number, commentId: number) => {
-    const feeling = feelings.find((f) => f.id === feelingId)
-    const comment = feeling?.commentsList.find((c) => c.id === commentId)
+    const feeling = feelings.find((f) => f.id === feelingId);
+    const comment = feeling?.commentsList.find((c) => c.id === commentId);
 
     if (feeling && comment) {
-      setEditingComment({ feelingId, commentId })
-      setEditCommentText(comment.content)
+      setEditingComment({ feelingId, commentId });
+      setEditCommentText(comment.content);
     }
-  }
+  };
 
   const saveEditedComment = (feelingId: number, commentId: number) => {
-    if (!editCommentText.trim()) return
+    if (!editCommentText.trim()) return;
 
     setFeelings(
       feelings.map((feeling) => {
@@ -183,45 +269,47 @@ export default function FeelingsPage() {
                 ...comment,
                 content: editCommentText,
                 timestamp: "Edited just now",
-              }
+              };
             }
-            return comment
-          })
+            return comment;
+          });
 
           return {
             ...feeling,
             commentsList: updatedComments,
-          }
+          };
         }
-        return feeling
-      }),
-    )
+        return feeling;
+      })
+    );
 
-    setEditingComment(null)
-    setEditCommentText("")
-  }
+    setEditingComment(null);
+    setEditCommentText("");
+  };
 
   const cancelEditComment = () => {
-    setEditingComment(null)
-    setEditCommentText("")
-  }
+    setEditingComment(null);
+    setEditCommentText("");
+  };
 
   const deleteComment = (feelingId: number, commentId: number) => {
     setFeelings(
       feelings.map((feeling) => {
         if (feeling.id === feelingId) {
-          const filteredComments = feeling.commentsList.filter((comment) => comment.id !== commentId)
+          const filteredComments = feeling.commentsList.filter(
+            (comment) => comment.id !== commentId
+          );
 
           return {
             ...feeling,
             comments: feeling.comments - 1,
             commentsList: filteredComments,
-          }
+          };
         }
-        return feeling
-      }),
-    )
-  }
+        return feeling;
+      })
+    );
+  };
 
   const container = {
     hidden: { opacity: 0 },
@@ -231,12 +319,12 @@ export default function FeelingsPage() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
-  }
+  };
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -253,7 +341,8 @@ export default function FeelingsPage() {
         </ScrollAnimation>
         <ScrollAnimation delay={0.1}>
           <p className="text-muted-foreground mb-8">
-            Share what is on your mind anonymously. Your feelings are valid and you are not alone.
+            Share what is on your mind anonymously. Your feelings are valid and
+            you are not alone.
           </p>
         </ScrollAnimation>
 
@@ -277,12 +366,16 @@ export default function FeelingsPage() {
               />
               <div className="flex flex-wrap gap-2 mb-3">
                 {feelingTypes.map((type) => (
-                  <motion.div key={type.name} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                  <motion.div
+                    key={type.name}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     <Badge
                       variant="outline"
                       className={cn(
                         "cursor-pointer transition-all",
-                        selectedFeelingType === type.name ? type.color : "",
+                        selectedFeelingType === type.name ? type.color : ""
                       )}
                       onClick={() => setSelectedFeelingType(type.name)}
                     >
@@ -293,7 +386,10 @@ export default function FeelingsPage() {
               </div>
             </CardContent>
             <CardFooter className="flex justify-end">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
                   onClick={handlePostFeeling}
                   className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary shadow-md hover:shadow-primary/20 transition-all duration-300"
@@ -327,9 +423,18 @@ export default function FeelingsPage() {
               </TabsList>
 
               <TabsContent value="all">
-                <motion.div variants={container} initial="hidden" animate="show" className="space-y-4 mt-4">
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  animate="show"
+                  className="space-y-4 mt-4"
+                >
                   {feelings.map((feeling, index) => (
-                    <ScrollAnimation key={feeling.id} delay={0.1 * index} threshold={0.1}>
+                    <ScrollAnimation
+                      key={feeling.id}
+                      delay={0.1 * index}
+                      threshold={0.1}
+                    >
                       <FeelingCard
                         feeling={feeling}
                         onLike={handleLike}
@@ -340,6 +445,7 @@ export default function FeelingsPage() {
                         onAddComment={handleAddComment}
                         editingComment={editingComment}
                         editCommentText={editCommentText}
+                        setEditCommentText={setEditCommentText}
                         handleEditComment={handleEditComment}
                         saveEditedComment={saveEditedComment}
                         cancelEditComment={cancelEditComment}
@@ -354,11 +460,22 @@ export default function FeelingsPage() {
 
               {/* Other tabs would filter by feeling type */}
               <TabsContent value="happy">
-                <motion.div variants={container} initial="hidden" animate="show" className="space-y-4 mt-4">
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  animate="show"
+                  className="space-y-4 mt-4"
+                >
                   {feelings
-                    .filter((f) => ["Happy", "Grateful", "Hopeful"].includes(f.feeling))
+                    .filter((f) =>
+                      ["Happy", "Grateful", "Hopeful"].includes(f.feeling)
+                    )
                     .map((feeling, index) => (
-                      <ScrollAnimation key={feeling.id} delay={0.1 * index} threshold={0.1}>
+                      <ScrollAnimation
+                        key={feeling.id}
+                        delay={0.1 * index}
+                        threshold={0.1}
+                      >
                         <FeelingCard
                           feeling={feeling}
                           onLike={handleLike}
@@ -369,6 +486,7 @@ export default function FeelingsPage() {
                           onAddComment={handleAddComment}
                           editingComment={editingComment}
                           editCommentText={editCommentText}
+                          setEditCommentText={setEditCommentText}
                           handleEditComment={handleEditComment}
                           saveEditedComment={saveEditedComment}
                           cancelEditComment={cancelEditComment}
@@ -382,11 +500,24 @@ export default function FeelingsPage() {
               </TabsContent>
 
               <TabsContent value="sad">
-                <motion.div variants={container} initial="hidden" animate="show" className="space-y-4 mt-4">
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  animate="show"
+                  className="space-y-4 mt-4"
+                >
                   {feelings
-                    .filter((f) => ["Sad", "Anxious", "Angry", "Overwhelmed"].includes(f.feeling))
+                    .filter((f) =>
+                      ["Sad", "Anxious", "Angry", "Overwhelmed"].includes(
+                        f.feeling
+                      )
+                    )
                     .map((feeling, index) => (
-                      <ScrollAnimation key={feeling.id} delay={0.1 * index} threshold={0.1}>
+                      <ScrollAnimation
+                        key={feeling.id}
+                        delay={0.1 * index}
+                        threshold={0.1}
+                      >
                         <FeelingCard
                           feeling={feeling}
                           onLike={handleLike}
@@ -397,6 +528,7 @@ export default function FeelingsPage() {
                           onAddComment={handleAddComment}
                           editingComment={editingComment}
                           editCommentText={editCommentText}
+                          setEditCommentText={setEditCommentText}
                           handleEditComment={handleEditComment}
                           saveEditedComment={saveEditedComment}
                           cancelEditComment={cancelEditComment}
@@ -410,11 +542,20 @@ export default function FeelingsPage() {
               </TabsContent>
 
               <TabsContent value="neutral">
-                <motion.div variants={container} initial="hidden" animate="show" className="space-y-4 mt-4">
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  animate="show"
+                  className="space-y-4 mt-4"
+                >
                   {feelings
                     .filter((f) => ["Confused"].includes(f.feeling))
                     .map((feeling, index) => (
-                      <ScrollAnimation key={feeling.id} delay={0.1 * index} threshold={0.1}>
+                      <ScrollAnimation
+                        key={feeling.id}
+                        delay={0.1 * index}
+                        threshold={0.1}
+                      >
                         <FeelingCard
                           feeling={feeling}
                           onLike={handleLike}
@@ -425,6 +566,7 @@ export default function FeelingsPage() {
                           onAddComment={handleAddComment}
                           editingComment={editingComment}
                           editCommentText={editCommentText}
+                          setEditCommentText={setEditCommentText}
                           handleEditComment={handleEditComment}
                           saveEditedComment={saveEditedComment}
                           cancelEditComment={cancelEditComment}
@@ -441,7 +583,7 @@ export default function FeelingsPage() {
         </ScrollAnimation>
       </motion.div>
     </div>
-  )
+  );
 }
 
 interface FeelingCardProps {
@@ -463,12 +605,13 @@ interface FeelingCardProps {
   onAddComment: (id: number) => void;
   editingComment: { feelingId: number; commentId: number } | null;
   editCommentText: string;
+  setEditCommentText: (text: string) => void;
   handleEditComment: (feelingId: number, commentId: number) => void;
   saveEditedComment: (feelingId: number, commentId: number) => void;
   cancelEditComment: () => void;
   deleteComment: (feelingId: number, commentId: number) => void;
   variants: Variants;
-  commentsRef: React.RefObject<HTMLDivElement | null>; // Allow null
+  commentsRef: React.RefObject<HTMLDivElement | null>;
 }
 
 function FeelingCard({
@@ -481,6 +624,7 @@ function FeelingCard({
   onAddComment,
   editingComment,
   editCommentText,
+  setEditCommentText,
   handleEditComment,
   saveEditedComment,
   cancelEditComment,
@@ -488,7 +632,9 @@ function FeelingCard({
   variants,
   commentsRef,
 }: FeelingCardProps) {
-  const feelingType = feelingTypes.find((type) => type.name === feeling.feeling) || feelingTypes[0]
+  const feelingType =
+    feelingTypes.find((type) => type.name === feeling.feeling) ||
+    feelingTypes[0];
 
   return (
     <motion.div
@@ -505,10 +651,15 @@ function FeelingCard({
               </Avatar>
               <div>
                 <span className="text-sm font-medium">Anonymous</span>
-                <p className="text-xs text-muted-foreground">{feeling.timestamp}</p>
+                <p className="text-xs text-muted-foreground">
+                  {feeling.timestamp}
+                </p>
               </div>
             </div>
-            <motion.div whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400 }}>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
               <Badge className={feelingType.color}>
                 {feelingType.emoji} {feeling.feeling}
               </Badge>
@@ -526,11 +677,16 @@ function FeelingCard({
                 size="sm"
                 className={cn(
                   "gap-1 transition-colors duration-300",
-                  feeling.isLiked ? "text-red-500 hover:text-red-600" : "hover:text-red-400",
+                  feeling.isLiked
+                    ? "text-red-500 hover:text-red-600"
+                    : "hover:text-red-400"
                 )}
                 onClick={() => onLike(feeling.id)}
               >
-                <Heart className="h-4 w-4" fill={feeling.isLiked ? "currentColor" : "none"} />
+                <Heart
+                  className="h-4 w-4"
+                  fill={feeling.isLiked ? "currentColor" : "none"}
+                />
                 <span>{feeling.likes}</span>
               </Button>
             </motion.div>
@@ -540,16 +696,31 @@ function FeelingCard({
                 size="sm"
                 className={cn(
                   "gap-1 transition-colors duration-300",
-                  showCommentInput ? "text-blue-500 hover:text-blue-600" : "hover:text-blue-400",
+                  showCommentInput
+                    ? "text-blue-500 hover:text-blue-600"
+                    : "hover:text-blue-400"
                 )}
-                onClick={() => setShowCommentInput(showCommentInput ? null : feeling.id)}
+                onClick={() =>
+                  setShowCommentInput(showCommentInput ? null : feeling.id)
+                }
               >
-                <MessageCircle className="h-4 w-4" fill={showCommentInput ? "currentColor" : "none"} />
+                <MessageCircle
+                  className="h-4 w-4"
+                  fill={showCommentInput ? "currentColor" : "none"}
+                />
                 <span>{feeling.comments}</span>
               </Button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="ml-auto">
-              <Button variant="ghost" size="sm" className="gap-1 hover:text-green-500 transition-colors duration-300">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="ml-auto"
+            >
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-1 hover:text-green-500 transition-colors duration-300"
+              >
                 <ThumbsUp className="h-4 w-4" />
                 <span>Helpful</span>
               </Button>
@@ -569,82 +740,104 @@ function FeelingCard({
               >
                 <h4 className="text-sm font-medium">Comments</h4>
                 <AnimatePresence>
-                  {feeling.commentsList.map((comment: { id: number; content: string; timestamp: string }) => (
-                    <motion.div
-                      key={comment.id}
-                      className="flex gap-2"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Avatar className="h-6 w-6 border-2 border-primary/10">
-                        <AvatarFallback>A</AvatarFallback>
-                      </Avatar>
-                      <div className="bg-muted p-2 rounded-md text-sm flex-1 hover:bg-muted/80 transition-colors duration-200">
-                        {editingComment?.feelingId === feeling.id && editingComment?.commentId === comment.id ? (
-                          <div className="flex flex-col gap-2">
-                            <Textarea
-                              value={editCommentText}
-                              onChange={(e) => setEditCommentText(e.target.value)}
-                              className="min-h-[60px] text-sm focus:border-primary/50"
-                            />
-                            <div className="flex justify-end gap-2">
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                onClick={cancelEditComment}
-                                className="border-primary/20 hover:border-primary/50"
-                              >
-                                Cancel
-                              </Button>
-                              <Button
-                                size="sm"
-                                onClick={() => saveEditedComment(feeling.id, comment.id)}
-                                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary"
-                              >
-                                Save
-                              </Button>
-                            </div>
-                          </div>
-                        ) : (
-                          <>
-                            <div className="flex justify-between items-start">
-                              <p>{comment.content}</p>
-                              <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    className="h-6 w-6 p-0 opacity-50 hover:opacity-100 transition-opacity duration-200"
-                                  >
-                                    <MoreHorizontal className="h-4 w-4" />
-                                  </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent
-                                  align="end"
-                                  className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm"
+                  {feeling.commentsList.map(
+                    (comment: {
+                      id: number;
+                      content: string;
+                      timestamp: string;
+                    }) => (
+                      <motion.div
+                        key={comment.id}
+                        className="flex gap-2"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Avatar className="h-6 w-6 border-2 border-primary/10">
+                          <AvatarFallback>A</AvatarFallback>
+                        </Avatar>
+                        <div className="bg-muted p-2 rounded-md text-sm flex-1 hover:bg-muted/80 transition-colors duration-200">
+                          {editingComment?.feelingId === feeling.id &&
+                          editingComment?.commentId === comment.id ? (
+                            <div className="flex flex-col gap-2">
+                              <Textarea
+                                value={editCommentText}
+                                onChange={(e) =>
+                                  setEditCommentText(e.target.value)
+                                }
+                                className="min-h-[60px] text-sm focus:border-primary/50"
+                              />
+                              <div className="flex justify-end gap-2">
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={cancelEditComment}
+                                  className="border-primary/20 hover:border-primary/50"
                                 >
-                                  <DropdownMenuItem onClick={() => handleEditComment(feeling.id, comment.id)}>
-                                    <Edit className="mr-2 h-4 w-4" />
-                                    <span>Edit</span>
-                                  </DropdownMenuItem>
-                                  <DropdownMenuItem
-                                    className="text-red-600"
-                                    onClick={() => deleteComment(feeling.id, comment.id)}
-                                  >
-                                    <Trash2 className="mr-2 h-4 w-4" />
-                                    <span>Delete</span>
-                                  </DropdownMenuItem>
-                                </DropdownMenuContent>
-                              </DropdownMenu>
+                                  Cancel
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  onClick={() =>
+                                    saveEditedComment(feeling.id, comment.id)
+                                  }
+                                  className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary"
+                                >
+                                  Save
+                                </Button>
+                              </div>
                             </div>
-                            <p className="text-xs text-muted-foreground mt-1">{comment.timestamp}</p>
-                          </>
-                        )}
-                      </div>
-                    </motion.div>
-                  ))}
+                          ) : (
+                            <>
+                              <div className="flex justify-between items-start">
+                                <p>{comment.content}</p>
+                                <DropdownMenu>
+                                  <DropdownMenuTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      className="h-6 w-6 p-0 opacity-50 hover:opacity-100 transition-opacity duration-200"
+                                    >
+                                      <MoreHorizontal className="h-4 w-4" />
+                                    </Button>
+                                  </DropdownMenuTrigger>
+                                  <DropdownMenuContent
+                                    align="end"
+                                    className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm"
+                                  >
+                                    <DropdownMenuItem
+                                      onClick={() =>
+                                        handleEditComment(
+                                          feeling.id,
+                                          comment.id
+                                        )
+                                      }
+                                    >
+                                      <Edit className="mr-2 h-4 w-4" />
+                                      <span>Edit</span>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem
+                                      className="text-red-600"
+                                      onClick={() =>
+                                        deleteComment(feeling.id, comment.id)
+                                      }
+                                    >
+                                      <Trash2 className="mr-2 h-4 w-4" />
+                                      <span>Delete</span>
+                                    </DropdownMenuItem>
+                                  </DropdownMenuContent>
+                                </DropdownMenu>
+                              </div>
+                              <p className="text-xs text-muted-foreground mt-1">
+                                {comment.timestamp}
+                              </p>
+                            </>
+                          )}
+                        </div>
+                      </motion.div>
+                    )
+                  )}
                 </AnimatePresence>
               </motion.div>
             )}
@@ -670,7 +863,10 @@ function FeelingCard({
                     onChange={(e) => setCommentText(e.target.value)}
                     className="min-h-[60px] text-sm flex-1 focus:border-primary/50"
                   />
-                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
                     <Button
                       size="sm"
                       onClick={() => onAddComment(feeling.id)}
@@ -686,6 +882,5 @@ function FeelingCard({
         </CardFooter>
       </Card>
     </motion.div>
-  )
+  );
 }
-
