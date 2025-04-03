@@ -103,10 +103,10 @@ export default function SharePage() {
               </div>
             </CardContent>
             <CardFooter className="flex justify-between">
-              <Button type="button" variant="outline">
+              <Button className="dark:bg-red-500 dark:text-white dark:hover:bg-white dark:hover:text-red-500" type="button" variant="outline">
                 Cancel
               </Button>
-              <Button type="submit">Submit Story</Button>
+              <Button className="dark:text-white dark:hover:bg-teal-500" type="submit">Submit Story</Button>
             </CardFooter>
           </form>
         </Card>

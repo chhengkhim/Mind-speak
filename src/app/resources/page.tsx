@@ -29,7 +29,7 @@ export default function ResourcesPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div className="bg-red-50 border dark:text-blue-500 font-bold border-red-200 rounded-lg p-4">
                   <h3 className="font-medium text-red-800 flex items-center">
                     <Phone className="h-4 w-4 mr-2" />
                     Emergency Contacts

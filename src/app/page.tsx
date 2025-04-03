@@ -26,7 +26,7 @@ export default function Home() {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300 dark:text-white"
               >
                 <Link href="/stories">Read Stories</Link>
               </Button>
@@ -132,7 +132,7 @@ export default function Home() {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary hover:shadow-primary/20 transition-all duration-300 dark:text-white shadow-lg dark:hover:shadow-blue-500"
               >
                 <Link href="/join">Join Now</Link>
               </Button>
@@ -140,7 +140,7 @@ export default function Home() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-primary/20 hover:border-primary/50 transition-all duration-300"
+                className="border-primary/20 hover:border-primary/50 transition-all duration-300 dark:bg-blue-500 dark:hover:bg-teal-500 dark:hover:shadow-teal-500 shadow-lg"
               >
                 <Link href="/telegram">Join Telegram Group</Link>
               </Button>
