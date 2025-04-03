@@ -74,7 +74,7 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} MindSpeak. All rights reserved.</p>
 
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" asChild>
+            <Button className="bg-blue-500 dark:bg-blue-500 dark:hover:bg-white dark:hover:shadow-blue-500 text-white hover:text-blue-500 hover:bg-white shadow-black/20 shadow-lg rounded-3xl" variant="ghost" size="icon" asChild>
               <Link href="https://t.me/MindSpeakCommunity" target="_blank" rel="noopener noreferrer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ export default function Footer() {
               </Link>
             </Button>
 
-            <Button variant="ghost" size="icon" asChild>
+            <Button className="bg-blue-500 dark:bg-blue-500 dark:hover:bg-white dark:hover:shadow-blue-500 text-white hover:text-blue-500 hover:bg-white shadow-black/20 shadow-lg rounded-3xl" variant="ghost" size="icon" asChild>
               <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@ export default function Footer() {
               </Link>
             </Button>
 
-            <Button variant="ghost" size="icon" asChild>
+            <Button className="bg-pink-500 dark:bg-pink-500 dark:hover:bg-white dark:hover:shadow-pink-500 hover:bg-white text-white hover:text-pink-500 rounded-3xl shadow-black/20 shadow-lg" variant="ghost" size="icon" asChild>
               <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

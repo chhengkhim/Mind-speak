@@ -55,7 +55,7 @@ export default function Navbar() {
         >
           <Link href="/" className="flex items-center gap-2">
             <motion.div whileHover={{ rotate: 20 }} transition={{ type: "spring", stiffness: 500 }}>
-              <Heart className="h-6 w-6 text-primary" />
+              <Heart className="h-6 text-red-600 w-6 text-primary" />
             </motion.div>
             <span className="text-2xl font-bold text-primary">MindSpeak</span>
           </Link>
@@ -88,13 +88,13 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <ModeToggle />
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button asChild variant="outline" size="sm">
+            <Button className="bg-blue-500 text-white hover:bg-white hover:text-blue-500 shadow-lg hover:shadow-blue-500" asChild variant="outline" size="sm">
               <Link href="/login">Sign In</Link>
             </Button>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button asChild size="sm">
-              <Link href="/join">Join</Link>
+              <Link className="bg-teal-500 text-white hover:bg-white hover:text-teal-500 shadow-lg hover:shadow-teal-500" href="/join">Join</Link>
             </Button>
           </motion.div>
         </div>

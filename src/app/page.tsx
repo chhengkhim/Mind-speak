@@ -34,7 +34,7 @@ export default function Home() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-primary/20 hover:border-primary/50 transition-all duration-300"
+                className="border-primary/20 hover:border-primary/50 transition-all duration-300 bg-teal-500 text-white hover:text-white hover:bg-teal-700"
               >
                 <Link href="/share">Share Your Story</Link>
               </Button>
