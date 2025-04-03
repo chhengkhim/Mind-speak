@@ -1,3 +1,4 @@
+import { TypingAnimation } from "@/components/magicui/typing-animation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { MessageSquare, Send } from "lucide-react"
@@ -7,7 +8,7 @@ export default function TelegramPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold tracking-tight mb-6 text-center">Join Our Telegram Community</h1>
+        <TypingAnimation className="text-3xl font-bold tracking-tight mb-6 text-center text-blue-500">Join Our Telegram Community</TypingAnimation>
         <p className="text-muted-foreground mb-8 text-center">
           Connect with our supportive community through our anonymous Telegram group.
         </p>
@@ -40,7 +41,7 @@ export default function TelegramPage() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full" asChild>
+            <Button className="w-full bg-blue-500 text-white dark:hover:bg-white dark:hover:text-blue-500 shadow-md hover:shadow-blue-500" asChild>
               <Link href="https://t.me/MindSpeakCommunity" target="_blank" rel="noopener noreferrer">
                 <Send className="mr-2 h-4 w-4" />
                 Join Telegram Group

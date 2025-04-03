@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Heart, MessageCircle, Shield, Users } from "lucide-react"
 import { ScrollAnimation, ParallaxScroll } from "@/components/ui/scroll-animation"
+import { TypingAnimation } from "@/components/magicui/typing-animation"
 
 export default function Home() {
   return (
@@ -12,9 +13,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none rounded-3xl" />
         <ParallaxScroll speed={-0.2} className="space-y-4 max-w-3xl relative z-10">
           <ScrollAnimation>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+            <TypingAnimation className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
               Welcome to MindSpeak
-            </h1>
+            </TypingAnimation>
           </ScrollAnimation>
           <ScrollAnimation delay={0.1}>
             <p className="text-xl text-muted-foreground max-w-[700px] mx-auto">
@@ -54,9 +55,9 @@ export default function Home() {
           </div>
         </ScrollAnimation>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 shadow-lg">
           <ScrollAnimation direction="up" delay={0.1}>
-            <Card className="border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+            <Card className="border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-blue-500 transition-all duration-300 h-full">
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center text-center space-y-4">
                   <div className="p-3 rounded-full bg-gradient-to-br from-primary/20 to-primary/5">
@@ -72,7 +73,7 @@ export default function Home() {
           </ScrollAnimation>
 
           <ScrollAnimation direction="up" delay={0.2}>
-            <Card className="border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+            <Card className="border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full  hover:shadow-blue-500">
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center text-center space-y-4">
                   <div className="p-3 rounded-full bg-gradient-to-br from-primary/20 to-primary/5">
@@ -88,7 +89,7 @@ export default function Home() {
           </ScrollAnimation>
 
           <ScrollAnimation direction="up" delay={0.3}>
-            <Card className="border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+            <Card className="border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full hover:shadow-blue-500">
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center text-center space-y-4">
                   <div className="p-3 rounded-full bg-gradient-to-br from-primary/20 to-primary/5">
@@ -102,14 +103,14 @@ export default function Home() {
           </ScrollAnimation>
 
           <ScrollAnimation direction="up" delay={0.4}>
-            <Card className="border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+            <Card className="border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full hover:shadow-blue-500">
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center text-center space-y-4">
                   <div className="p-3 rounded-full bg-gradient-to-br from-primary/20 to-primary/5">
                     <Heart className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-medium">Healing Together</h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground dark:hover:text-blue-500">
                     Find comfort in shared experiences and grow stronger as a community
                   </p>
                 </div>

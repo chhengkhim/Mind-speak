@@ -13,6 +13,8 @@ import Link from "next/link"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
+import { TypingAnimation } from "@/components/magicui/typing-animation"
+
 
 export default function StoriesPage() {
   // This would normally come from a database
@@ -297,9 +299,9 @@ export default function StoriesPage() {
         className="max-w-3xl mx-auto"
       >
         <ScrollAnimation>
-          <h1 className="text-3xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <TypingAnimation className="text-3xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
             Community Stories
-          </h1>
+          </TypingAnimation>
         </ScrollAnimation>
         <ScrollAnimation delay={0.1}>
           <p className="text-muted-foreground mb-8">
@@ -350,7 +352,7 @@ export default function StoriesPage() {
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                   className="transform transition-all duration-200"
                 >
-                  <Card className="overflow-hidden hover:shadow-lg transition-shadow border-primary/10 hover:border-primary/30">
+                  <Card className="overflow-hidden hover:shadow-md hover:shadow-blue-500 transition-shadow border-primary/10 hover:border-primary/30">
                     <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent">
                       <div className="flex justify-between items-start">
                         <div>

@@ -1,3 +1,4 @@
+import { TypingAnimation } from "@/components/magicui/typing-animation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -8,7 +9,7 @@ export default function ResourcesPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold tracking-tight mb-6">Mental Health Resources</h1>
+        <TypingAnimation className="text-3xl font-bold tracking-tight mb-6 text-blue-500">Mental Health Resources</TypingAnimation>
         <p className="text-muted-foreground mb-8">
           Find helpful resources, professional support, and educational materials to support your mental health journey.
         </p>
@@ -29,7 +30,7 @@ export default function ResourcesPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-red-50 border dark:text-blue-500 font-bold border-red-200 rounded-lg p-4">
+                <div className="bg-red-50 border text-teal-600 dark:text-blue-500 font-bold border-red-200 rounded-lg p-4">
                   <h3 className="font-medium text-red-800 flex items-center">
                     <Phone className="h-4 w-4 mr-2" />
                     Emergency Contacts
@@ -74,7 +75,7 @@ export default function ResourcesPage() {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full" asChild>
+                <Button variant="outline" className="w-full bg-teal-500 text-white hover:text-white hover:bg-teal-600" asChild>
                   <Link href="https://tpocambodia.org/" target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Visit TPO Cambodia Website

@@ -10,6 +10,7 @@ import { Calendar } from "@/components/ui/calendar"
 import { Smile, Meh, Frown, TrendingUp, CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
+import { TypingAnimation } from "@/components/magicui/typing-animation"
 
 // Sample mood data
 const moodData = [
@@ -63,9 +64,9 @@ export default function MoodTrackerPage() {
         className="max-w-4xl mx-auto"
       >
         <ScrollAnimation>
-          <h1 className="text-3xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <TypingAnimation className="text-3xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
             Mood Tracker
-          </h1>
+          </TypingAnimation>
         </ScrollAnimation>
         <ScrollAnimation delay={0.1}>
           <p className="text-muted-foreground mb-8">

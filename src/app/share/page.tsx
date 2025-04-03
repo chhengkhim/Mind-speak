@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Switch } from "@/components/ui/switch"
 import { AlertCircle, CheckCircle2 } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { TypingAnimation } from "@/components/magicui/typing-animation"
 
 export default function SharePage() {
   const [submitted, setSubmitted] = useState(false)
@@ -35,7 +36,7 @@ export default function SharePage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold tracking-tight mb-6">Share Your Story</h1>
+        <TypingAnimation className="text-3xl font-bold tracking-tight mb-6 text-blue-500">Share Your Story</TypingAnimation>
         <p className="text-muted-foreground mb-8">
           Your experiences matter. Share your journey in a safe, anonymous space where others can find comfort and
           connection.

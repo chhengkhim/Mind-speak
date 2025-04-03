@@ -35,6 +35,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
+import { TypingAnimation } from "@/components/magicui/typing-animation";
+
 
 // Feeling types with corresponding colors
 const feelingTypes = [
@@ -335,9 +337,9 @@ export default function FeelingsPage() {
         className="max-w-3xl mx-auto"
       >
         <ScrollAnimation>
-          <h1 className="text-3xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <TypingAnimation className="text-3xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
             Express Your Feelings
-          </h1>
+          </TypingAnimation>
         </ScrollAnimation>
         <ScrollAnimation delay={0.1}>
           <p className="text-muted-foreground mb-8">
