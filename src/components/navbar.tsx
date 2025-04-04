@@ -90,7 +90,7 @@ export default function Navbar() {
           <ModeToggle />
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button className="bg-blue-500 text-white hover:bg-white hover:text-blue-500 shadow-lg hover:shadow-blue-500" asChild variant="outline" size="sm">
-              <Link href="/login">Sign In</Link>
+              <Link href="/join">Sign In</Link>
             </Button>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

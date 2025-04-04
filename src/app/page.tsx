@@ -36,7 +36,7 @@ export default function Home() {
             </ScrollAnimation>
 
             <ScrollAnimation delay={0.1}>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 text-blue-500 leading-tight flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-light tracking-tight mb-4 sm:mb-6 text-blue-500 leading-tight flex flex-wrap items-center justify-center gap-1 sm:gap-2">
                 Welcome to
                 <span className="relative flex items-center gap-1 sm:gap-2 text-red-500">
                   <motion.div
@@ -52,7 +52,7 @@ export default function Home() {
                   >
                     <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-red-500 fill-red-500" />
                   </motion.div>
-                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+                  <span className="text-xl sm:text-2xl font-bold md:text-3xl lg:text-4xl">
                     MindSpeak
                   </span>
                   <motion.span
@@ -122,7 +122,7 @@ export default function Home() {
               >
                 <span className="text-sm font-medium">Our Features</span>
               </motion.div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+              <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
                 How MindSpeak Helps
               </h2>
               <p className="text-xl text-muted-foreground max-w-[700px] mx-auto">
@@ -226,7 +226,7 @@ export default function Home() {
                         {/* Title with animated underline */}
                         <div className="relative">
                           <motion.h3
-                            className="text-2xl font-bold"
+                            className="text-2xl font-light"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: feature.delay + 0.2 }}
@@ -285,7 +285,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <ScrollAnimation>
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-4">
                 What Our Community Says
               </h2>
               <p className="text-xl text-muted-foreground max-w-[700px] mx-auto">
@@ -408,7 +408,7 @@ export default function Home() {
                     Featured Resources
                   </span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h2 className="text-3xl md:text-4xl font-light tracking-tight text-gray-900 dark:text-white">
                   Access Mental Health Resources
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300">
@@ -571,7 +571,7 @@ export default function Home() {
               <div className="absolute -bottom-24 -left-24 h-[300px] w-[300px] rounded-full bg-primary/10 blur-3xl" />
 
               <div className="relative p-8 md:p-16 text-center">
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                <h2 className="text-3xl md:text-5xl font-light text-blue-500 tracking-tight mb-6">
                   Join Our Community
                 </h2>
                 <p className="text-xl text-muted-foreground max-w-[800px] mx-auto mb-10">
