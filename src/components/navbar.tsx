@@ -16,6 +16,7 @@ export default function Navbar() {
 
   const routes = [
     { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
     { href: "/stories", label: "Stories" },
     { href: "/feelings", label: "Express Feelings" },
     { href: "/mood-tracker", label: "Mood Tracker" },

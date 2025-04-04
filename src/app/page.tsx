@@ -1,34 +1,23 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import Link from "next/link"
-import { Heart, MessageCircle, Shield, Users, ArrowRight, BookOpen, Sparkles } from "lucide-react"
-import { ScrollAnimation } from "@/components/ui/scroll-animation"
-import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  Heart,
+  MessageCircle,
+  Shield,
+  Users,
+  ArrowRight,
+  Sparkles,
+  BookOpen,
+} from "lucide-react";
+import { ScrollAnimation } from "@/components/ui/scroll-animation";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
     <div className="relative overflow-hidden ">
-      {/* Background Elements - These will be visible throughout the page */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        {/* Main gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-
-        {/* Animated circles */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 blur-3xl opacity-60 animate-slow-spin" />
-        <div className="absolute bottom-1/4 right-1/3 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-blue-500/10 to-primary/10 blur-3xl opacity-50 animate-reverse-slow-spin" />
-
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.015] dark:opacity-[0.03]" />
-
-        {/* Floating shapes */}
-        <div className="absolute top-20 right-[10%] w-24 h-24 rounded-xl bg-primary/10 blur-xl animate-float opacity-70" />
-        <div className="absolute top-[40%] left-[5%] w-16 h-16 rounded-full bg-blue-400/10 blur-xl animate-float-delay opacity-70" />
-        <div className="absolute bottom-[20%] right-[15%] w-20 h-20 rounded-lg bg-purple-400/10 blur-xl animate-float-slow opacity-70" />
-        <div className="absolute bottom-[10%] left-[20%] w-32 h-32 rounded-full bg-primary/10 blur-xl animate-float-delay-slow opacity-70" />
-      </div>
-
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 lg:py-36">
         <div className="container mx-auto px-4">
@@ -47,13 +36,27 @@ export default function Home() {
             </ScrollAnimation>
 
             <ScrollAnimation delay={0.1}>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/70 leading-tight flex flex-wrap items-center gap-1 sm:gap-2">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 text-blue-500 leading-tight flex flex-wrap items-center justify-center gap-1 sm:gap-2">
                 Welcome to
                 <span className="relative flex items-center gap-1 sm:gap-2 text-red-500">
-                  <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
-                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">MindSpeak</span>
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Number.POSITIVE_INFINITY,
+                      repeatType: "loop",
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-red-500 fill-red-500" />
+                  </motion.div>
+                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+                    MindSpeak
+                  </span>
                   <motion.span
-                    className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-primary/80 to-primary/20 dark:bg-red-500 rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-red-500/80 to-red-500/20 rounded-full"
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
                     transition={{ delay: 0.5, duration: 0.8 }}
@@ -63,7 +66,8 @@ export default function Home() {
             </ScrollAnimation>
             <ScrollAnimation delay={0.2}>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-[800px] mx-auto mb-8 leading-relaxed">
-                A safe haven for expressing mental struggles and sharing experiences. You are not alone in your journey.
+                A safe haven for expressing mental struggles and sharing
+                experiences. You are not alone in your journey.
               </p>
             </ScrollAnimation>
 
@@ -122,7 +126,8 @@ export default function Home() {
                 How MindSpeak Helps
               </h2>
               <p className="text-xl text-muted-foreground max-w-[700px] mx-auto">
-                Our platform provides multiple ways to support your mental health journey
+                Our platform provides multiple ways to support your mental
+                health journey
               </p>
             </div>
           </ScrollAnimation>
@@ -136,7 +141,8 @@ export default function Home() {
                   "Express yourself in a judgment-free environment where privacy is respected and your voice matters",
                 gradient: "from-green-500 to-emerald-400",
                 shadowColor: "shadow-green-500/20 hover:shadow-green-500/30",
-                iconBg: "bg-gradient-to-br from-green-100 to-emerald-50 dark:from-green-900/30 dark:to-emerald-800/20",
+                iconBg:
+                  "bg-gradient-to-br from-green-100 to-emerald-50 dark:from-green-900/30 dark:to-emerald-800/20",
                 iconColor: "text-green-500",
                 delay: 0.1,
               },
@@ -147,7 +153,8 @@ export default function Home() {
                   "Share your thoughts and experiences without revealing your identity, in a supportive community",
                 gradient: "from-blue-500 to-cyan-400",
                 shadowColor: "shadow-blue-500/20 hover:shadow-blue-500/30",
-                iconBg: "bg-gradient-to-br from-blue-100 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-800/20",
+                iconBg:
+                  "bg-gradient-to-br from-blue-100 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-800/20",
                 iconColor: "text-blue-500",
                 delay: 0.2,
               },
@@ -158,7 +165,8 @@ export default function Home() {
                   "Connect with others who understand what you are going through and find strength in shared experiences",
                 gradient: "from-purple-500 to-violet-400",
                 shadowColor: "shadow-purple-500/20 hover:shadow-purple-500/30",
-                iconBg: "bg-gradient-to-br from-purple-100 to-violet-50 dark:from-purple-900/30 dark:to-violet-800/20",
+                iconBg:
+                  "bg-gradient-to-br from-purple-100 to-violet-50 dark:from-purple-900/30 dark:to-violet-800/20",
                 iconColor: "text-purple-500",
                 delay: 0.3,
               },
@@ -169,7 +177,8 @@ export default function Home() {
                   "Find comfort in shared experiences and grow stronger as a community that supports each other",
                 gradient: "from-rose-500 to-pink-400",
                 shadowColor: "shadow-rose-500/20 hover:shadow-rose-500/30",
-                iconBg: "bg-gradient-to-br from-rose-100 to-pink-50 dark:from-rose-900/30 dark:to-pink-800/20",
+                iconBg:
+                  "bg-gradient-to-br from-rose-100 to-pink-50 dark:from-rose-900/30 dark:to-pink-800/20",
                 iconColor: "text-rose-500",
                 delay: 0.4,
               },
@@ -189,16 +198,10 @@ export default function Home() {
                 >
                   <Card className="relative h-full border-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden group">
                     {/* Gradient border top */}
-                    <div
-                      className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r opacity-70 transition-opacity duration-300 group-hover:opacity-100"
-                      style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))` }}
-                    />
+                    <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r opacity-70 transition-opacity duration-300 group-hover:opacity-100 gradient-border-top" />
 
                     {/* Gradient overlay on hover */}
-                    <div
-                      className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 dark:group-hover:opacity-10 transition-opacity duration-500"
-                      style={{ backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))` }}
-                    />
+                    <div className="absolute inset-0 gradientOverlay" />
 
                     {/* Content */}
                     <CardContent className="p-8">
@@ -206,16 +209,18 @@ export default function Home() {
                         {/* Icon with animated background */}
                         <motion.div
                           className={`relative p-4 rounded-2xl ${feature.iconBg} ${feature.shadowColor} shadow-lg mb-2 group-hover:scale-110 transition-all duration-500`}
-                          whileHover={{ rotate: [0, -5, 5, -5, 0], transition: { duration: 0.5 } }}
+                          whileHover={{
+                            rotate: [0, -5, 5, -5, 0],
+                            transition: { duration: 0.5 },
+                          }}
                         >
                           {/* Subtle animated glow */}
-                          <div
-                            className="absolute inset-0 rounded-2xl bg-gradient-to-r opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"
-                            style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))` }}
-                          />
+                          <div className="absolute inset-0 rounded-2xl gradientOverlay group-hover:opacity-100 blur-md" />
 
                           {/* Icon */}
-                          <feature.icon className={`h-10 w-10 ${feature.iconColor} relative z-10`} />
+                          <feature.icon
+                            className={`h-10 w-10 ${feature.iconColor} relative z-10`}
+                          />
                         </motion.div>
 
                         {/* Title with animated underline */}
@@ -233,7 +238,10 @@ export default function Home() {
                             initial={{ width: 0 }}
                             whileInView={{ width: "60%" }}
                             viewport={{ once: true }}
-                            transition={{ delay: feature.delay + 0.4, duration: 0.6 }}
+                            transition={{
+                              delay: feature.delay + 0.4,
+                              duration: 0.6,
+                            }}
                           />
                         </div>
 
@@ -277,7 +285,9 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <ScrollAnimation>
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">What Our Community Says</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                What Our Community Says
+              </h2>
               <p className="text-xl text-muted-foreground max-w-[700px] mx-auto">
                 Real stories from students who found support through MindSpeak
               </p>
@@ -291,18 +301,27 @@ export default function Home() {
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center space-x-1">
                       {[1, 2, 3, 4, 5].map((star) => (
-                        <svg key={star} className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg
+                          key={star}
+                          className="w-5 h-5 text-yellow-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
                     </div>
                     <p className="italic text-muted-foreground">
-                      Finding MindSpeak was a turning point for me. Being able to share my anxiety struggles anonymously
-                      and receive support from others who understand has been incredibly healing.
+                      Finding MindSpeak was a turning point for me. Being able
+                      to share my anxiety struggles anonymously and receive
+                      support from others who understand has been incredibly
+                      healing.
                     </p>
                     <div className="pt-4">
                       <p className="font-medium">Computer Science Student</p>
-                      <p className="text-sm text-muted-foreground">Paragon University</p>
+                      <p className="text-sm text-muted-foreground">
+                        Paragon University
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -315,18 +334,28 @@ export default function Home() {
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center space-x-1">
                       {[1, 2, 3, 4, 5].map((star) => (
-                        <svg key={star} className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg
+                          key={star}
+                          className="w-5 h-5 text-yellow-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
                     </div>
                     <p className="italic text-muted-foreground">
-                      The resources and support I found here helped me through a really difficult time with depression.
-                      It is comforting to know I am not alone in what I am experiencing.
+                      The resources and support I found here helped me through a
+                      really difficult time with depression. It is comforting to
+                      know I am not alone in what I am experiencing.
                     </p>
                     <div className="pt-4">
-                      <p className="font-medium">Business Administration Student</p>
-                      <p className="text-sm text-muted-foreground">Paragon University</p>
+                      <p className="font-medium">
+                        Business Administration Student
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        Paragon University
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -339,18 +368,26 @@ export default function Home() {
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center space-x-1">
                       {[1, 2, 3, 4, 5].map((star) => (
-                        <svg key={star} className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg
+                          key={star}
+                          className="w-5 h-5 text-yellow-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
                     </div>
                     <p className="italic text-muted-foreground">
-                      The mood tracker has been a game-changer for me. Being able to visualize my emotional patterns has
-                      helped me identify triggers and develop better coping strategies.
+                      The mood tracker has been a game-changer for me. Being
+                      able to visualize my emotional patterns has helped me
+                      identify triggers and develop better coping strategies.
                     </p>
                     <div className="pt-4">
                       <p className="font-medium">Psychology Student</p>
-                      <p className="text-sm text-muted-foreground">Paragon University</p>
+                      <p className="text-sm text-muted-foreground">
+                        Paragon University
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -359,9 +396,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Features Highlight */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-primary/5 to-background">
+      {/* Features Highlight Section */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-blue-50/50 to-white dark:from-blue-900/10 dark:to-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <ScrollAnimation direction="left">
@@ -372,10 +408,13 @@ export default function Home() {
                     Featured Resources
                   </span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Access Mental Health Resources</h2>
-                <p className="text-lg text-muted-foreground">
-                  Find professional support, educational materials, and emergency contacts all in one place. Our curated
-                  resources help you navigate your mental health journey with confidence.
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Access Mental Health Resources
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300">
+                  Find professional support, educational materials, and
+                  emergency contacts all in one place. Our curated resources
+                  help you navigate your mental health journey with confidence.
                 </p>
                 <ul className="space-y-3">
                   {[
@@ -386,11 +425,23 @@ export default function Home() {
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <div className="rounded-full p-1 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-500 mt-0.5">
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        <svg
+                          className="h-4 w-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
                         </svg>
                       </div>
-                      <span>{item}</span>
+                      <span className="text-gray-700 dark:text-gray-300">
+                        {item}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -406,10 +457,10 @@ export default function Home() {
             <ScrollAnimation direction="right">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-900/20 dark:to-blue-800/10 rounded-2xl blur-xl opacity-70" />
-                <Card className="relative border-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm overflow-hidden rounded-2xl shadow-xl">
+                <Card className="relative border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm overflow-hidden rounded-2xl shadow-xl">
                   <CardContent className="p-0">
-                    <div className="grid grid-cols-2 gap-px bg-muted/20">
-                      <div className="bg-white dark:bg-gray-900 p-6 flex flex-col items-center text-center">
+                    <div className="grid grid-cols-2 gap-px bg-gray-100/20 dark:bg-gray-700/20">
+                      <div className="bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center">
                         <div className="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center mb-4">
                           <svg
                             className="h-6 w-6 text-red-600 dark:text-red-400"
@@ -425,13 +476,17 @@ export default function Home() {
                             />
                           </svg>
                         </div>
-                        <h3 className="font-medium">Emergency Help</h3>
-                        <p className="text-sm text-muted-foreground mt-2">Immediate support for crisis situations</p>
+                        <h3 className="font-medium text-gray-900 dark:text-white">
+                          Emergency Help
+                        </h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                          Immediate support for crisis situations
+                        </p>
                       </div>
-                      <div className="bg-white dark:bg-gray-900 p-6 flex flex-col items-center text-center">
+                      <div className="bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center">
                         <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
                           <svg
-                            className="h-6 w-6 text-teal-600 dark:text-teal-400"
+                            className="h-6 w-6 text-blue-600 dark:text-blue-400"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -444,10 +499,14 @@ export default function Home() {
                             />
                           </svg>
                         </div>
-                        <h3 className="font-medium">Campus Resources</h3>
-                        <p className="text-sm text-muted-foreground mt-2">Support services at your university</p>
+                        <h3 className="font-medium text-gray-900 dark:text-white">
+                          Campus Resources
+                        </h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                          Support services at your university
+                        </p>
                       </div>
-                      <div className="bg-white dark:bg-gray-900 p-6 flex flex-col items-center text-center">
+                      <div className="bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center">
                         <div className="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4">
                           <svg
                             className="h-6 w-6 text-amber-600 dark:text-amber-400"
@@ -463,10 +522,14 @@ export default function Home() {
                             />
                           </svg>
                         </div>
-                        <h3 className="font-medium">Educational Materials</h3>
-                        <p className="text-sm text-muted-foreground mt-2">Learn about mental health topics</p>
+                        <h3 className="font-medium text-gray-900 dark:text-white">
+                          Educational Materials
+                        </h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                          Learn about mental health topics
+                        </p>
                       </div>
-                      <div className="bg-white dark:bg-gray-900 p-6 flex flex-col items-center text-center">
+                      <div className="bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center">
                         <div className="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4">
                           <svg
                             className="h-6 w-6 text-purple-600 dark:text-purple-400"
@@ -482,8 +545,12 @@ export default function Home() {
                             />
                           </svg>
                         </div>
-                        <h3 className="font-medium">Self-Help Techniques</h3>
-                        <p className="text-sm text-muted-foreground mt-2">Practical strategies for wellbeing</p>
+                        <h3 className="font-medium text-gray-900 dark:text-white">
+                          Self-Help Techniques
+                        </h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                          Practical strategies for wellbeing
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -504,10 +571,13 @@ export default function Home() {
               <div className="absolute -bottom-24 -left-24 h-[300px] w-[300px] rounded-full bg-primary/10 blur-3xl" />
 
               <div className="relative p-8 md:p-16 text-center">
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Join Our Community</h2>
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                  Join Our Community
+                </h2>
                 <p className="text-xl text-muted-foreground max-w-[800px] mx-auto mb-10">
-                  Connect with fellow Paragon International University students in a supportive environment. Share your
-                  journey and find strength in community.
+                  Connect with fellow Paragon International University students
+                  in a supportive environment. Share your journey and find
+                  strength in community.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
@@ -535,6 +605,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-
