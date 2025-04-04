@@ -110,7 +110,7 @@ interface TeamMember {
 const GlassTeamCard = ({ member }: { member: TeamMember }) => {
   return (
     <motion.div
-      className="relative overflow-hidden rounded-3xl dark:bg-white dark:backdrop-blur-xl dark:bg-blue-500/5 border dark:border-blue-900/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
+      className="relative overflow-hidden rounded-3xl dark:bg-blue-500/5 border dark:border-blue-900/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
